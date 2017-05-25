@@ -26,16 +26,15 @@ chrome.pageAction.onClicked.addListener(function(tab) {
 
 // Check download and open file if it's downloaded
 function checkDownload(query) {
-  // disable download shelf
-  chrome.downloads.setShelfEnabled(false);  
   chrome.downloads.search(query, function(dl) {
     var currentDownload = dl[0];
     var fileName;
     var fileSize;
     var downloadId;
     chrome.downloads.onChanged.addListener(function downloadListener(download) {
-      // Set downloadId if the sizes are equal
+      // Set downloadId and disable shelf if the sizes are equal (it's our file)
       if (download.fileSize && download.fileSize.current && download.fileSize.current == currentDownload.fileSize) {
+        chrome.downloads.setShelfEnabled(false);
         fileSize = download.fileSize.current;
         downloadId = download.id;
         return;
@@ -49,7 +48,7 @@ function checkDownload(query) {
       if (download.id !== downloadId) {
         return;
       }
-      // If download is completed, we can enable dl shelf again
+      // If download is completed, we should enable dl shelf again
       // and open the file in Code and return
       if (download.state && download.state.current && download.state.current === 'complete') {
         chrome.downloads.onChanged.removeListener(downloadListener);
