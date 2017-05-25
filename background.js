@@ -25,8 +25,9 @@ chrome.pageAction.onClicked.addListener(function(tab) {
 });
 
 // Check download and open file if it's downloaded
-function checkDownload(query, tries) {
-  tries = tries || 0;
+function checkDownload(query) {
+  // disable download shelf
+  chrome.downloads.setShelfEnabled(false);  
   chrome.downloads.search(query, function(dl) {
     var currentDownload = dl[0];
     var fileName;
@@ -48,9 +49,11 @@ function checkDownload(query, tries) {
       if (download.id !== downloadId) {
         return;
       }
-      // If download is completed, we can open it in Code and return
+      // If download is completed, we can enable dl shelf again
+      // and open the file in Code and return
       if (download.state && download.state.current && download.state.current === 'complete') {
         chrome.downloads.onChanged.removeListener(downloadListener);
+        chrome.downloads.setShelfEnabled(true);
         openInCode(fileName);
         return;
       }
