@@ -3,7 +3,7 @@
 
 # Open in Code
 
-A simple Chrome Extension in _<70 lines of code_ that adds a button (a [page action](https://developer.chrome.com/extensions/pageAction)) for downloading and opening current viewing Github file in [Microsoft Visual Studio Code](https://code.visualstudio.com/).
+A simple Chrome Extension in _<80 lines of code_ that adds a button (a [page action](https://developer.chrome.com/extensions/pageAction)) for downloading and opening current viewing Github file in [Microsoft Visual Studio Code](https://code.visualstudio.com/).
 
 ## Screenshot
 
