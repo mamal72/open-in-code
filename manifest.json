@@ -1,9 +1,9 @@
 {
   "name": "Open in Code",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "manifest_version": 2,
   "description": "This extension downloads and opens current viewing Github file in Microsoft Visual Studio Code",
-  "homepage_url": "https://github.com/mamal72/open-in-vscode",
+  "homepage_url": "https://github.com/mamal72/open-in-code",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
